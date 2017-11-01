@@ -229,6 +229,7 @@ action :create do
     source.each do |k, v|
       properties["resources.source.#{i + 1}.#{k}"] = v
     end
+    properties["resources.source.#{i + 1}.config.file"] = ::File.join(node['rundeck_server']['datadir'], 'projects', new_resource.name, 'etc', 'resources.xml')
   end
   properties['service.FileCopier.default.provider'] = 'jsch-scp'
 
